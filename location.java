@@ -4,12 +4,12 @@ public class location implements GeoLocation{
     private double y;
     private double z;
 
-    //const
-    public void set_location(double x,double y,double z)
+
+    public location(double x,double y,double z)
     {
-        this.x=x;
-        this.y=y;
-        this.z=z;
+        this.x = x;
+        this.y = y;
+        this.z = z;
     }
     public location(GeoLocation ot)
     {

@@ -2,24 +2,20 @@ import api.GeoLocation;
 import api.NodeData;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 
 public class Node implements NodeData{
 
     private final int key;//id
-    private location location;
+    private GeoLocation location;
     private double weight;
     private int tag;
 
-    private ArrayList<Edge> in;
-    private ArrayList<Edge> out;
-
-
-
-    public Node(int key,location location)
+    public Node(int key, GeoLocation loc)
     {
         this.key=key;
-        this.location=location;
+        this.location=new location(loc);
         this.tag=0;
         this.weight=-1;
     }
@@ -29,45 +25,41 @@ public class Node implements NodeData{
         this.location=new location(n.getLocation());
         this.weight=n.getWeight();
         this.tag=n.getTag();
-
-        this.in=new ArrayList<>();
-        this.out=new ArrayList<>();
     }
 
     @Override
-    public int getKey() {
+    public int getKey()
+    {
         return this.key;
     }
 
     @Override
-    public GeoLocation getLocation() {
+    public GeoLocation getLocation()
+    {
         return this.location;
     }
 
     @Override
-    public void setLocation(GeoLocation p) {
-        this.location.set_location(p.x(),p.y(),p.z());
+    public void setLocation(GeoLocation p)
+    {
+        this.location=new location(p);
     }
 
     @Override
-    public double getWeight() {
+    public double getWeight()
+    {
         return this.weight;
     }
 
     @Override
-    public void setWeight(double w) {
-        if(this.weight==-1)
-        {
-            this.weight=w;
-        }
-        else
-        {
-            this.weight=Math.min(this.weight,w);
-        }
+    public void setWeight(double w)
+    {
+        this.weight=w;
     }
 
     @Override
     public String getInfo()
+
     {
         return null;
     }
@@ -80,29 +72,15 @@ public class Node implements NodeData{
 
     @Override
     public int getTag()
+
     {
         return this.tag;
     }
 
     @Override
     public void setTag(int t)
+
     {
         this.tag=t;
     }
-
-    // my functions
-    public ArrayList<Edge> getInlist()
-    {
-        return this.in;
-    }
-    public ArrayList<Edge> getOutlist()
-    {
-        return this.out;
-    }
-    public void removeEdge(Edge e)
-    {
-        this.out.remove(e);
-        this.in.remove(e);
-    }
-
 }

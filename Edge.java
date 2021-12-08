@@ -13,6 +13,13 @@ public class Edge implements EdgeData {
         this.weight=_weight;
         this.tag=0;
     }
+    public Edge(EdgeData E)
+    {
+        this.src=E.getSrc();
+        this.dest=E.getDest();
+        this.weight=E.getWeight();
+        this.tag=E.getTag();
+    }
     @Override
     public int getSrc() {
         return this.src;
